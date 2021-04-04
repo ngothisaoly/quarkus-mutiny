@@ -72,10 +72,11 @@ public class MultiTransform {
     }
 
     public static Multi<String> transformToMultiAndConcatenate(String name) {
+        System.out.println("-----------------TRANSFORM FOR ITEM: " + name);
         Multi<String> multi = Multi.createFrom().items("\n------" + name);
         if (name.equals("transformToMultiAndConcatenateA")) {
             multi =  multi.onItem().call(i ->
-                    Uni.createFrom().nullItem().onItem().delayIt().by(Duration.ofMillis(6000))
+                    Uni.createFrom().nullItem().onItem().delayIt().by(Duration.ofMillis(5000))
             );
 
         }
@@ -89,6 +90,7 @@ public class MultiTransform {
 
 
     public static Multi<String> transformToMultiAndMerge(String name) {
+        System.out.println("-----------------TRANSFORM FOR ITEM: " + name);
         Multi<String> multi = Multi.createFrom().items("\n--------" + name);
         if (name.equals("transformToMultiAndMergeA")) {
             multi =  multi.onItem().call(i ->
@@ -104,6 +106,7 @@ public class MultiTransform {
     }
 
     public static Uni<String> transformToUniAndConcatenate(String name) {
+        System.out.println("-----------------TRANSFORM FOR ITEM: " + name);
         Uni uni = Uni.createFrom().item("\n----" + name);
         if (name.equals("transformToUniAndConcatenateA"))
             uni = uni.onItem().delayIt().by(Duration.ofMillis(5000));
@@ -114,6 +117,7 @@ public class MultiTransform {
     }
 
     public static Uni<String> transformToUniAndMerge(String name) {
+        System.out.println("-----------------TRANSFORM FOR ITEM: " + name);
         Uni uni = Uni.createFrom().item("\n--" + name);
         if (name.equals("transformToUniAndMergeA"))
             uni = uni.onItem().delayIt().by(Duration.ofMillis(5000));
